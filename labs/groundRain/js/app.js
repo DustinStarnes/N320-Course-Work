@@ -6,7 +6,6 @@ class RainCloud {
   //constructer that makes an array
   constructor() {
     this.drops = [];
-    this.dropsHitGround = 0;
   }
 
   //method that makes a raindrop (will be called on by chance in the draw function (P5))
@@ -21,28 +20,6 @@ class RainCloud {
   update() {
     for (var i = 0; i < this.drops.length; i++) {
       this.drops[i].update();
-    }
-  }
-
-  //method that goes through the array of drops and checks if any of them hit the ground, called on in draw function (P5)
-  hitGround() {
-    for (var i = 0; i < this.drops.length; i++) {
-      //if the drop hits the ground it is removed from the array and then runs the grounds addColor method
-      if (this.drops[i].y > 590) {
-        this.drops.splice(i, 1);
-
-        //adds one to the drop counter
-        this.dropsHitGround++;
-      }
-
-      //if statement that adds color to ground for every 10 drops that hits the ground, then resets the dropsHitGround counter
-      if (this.dropsHitGround == 10) {
-        //adds color to ground layer
-        ground.addColor();
-
-        //resets the var
-        this.dropsHitGround = 0;
-      }
     }
   }
 }
@@ -99,6 +76,7 @@ class Ground {
     this.height = 10;
     this.width = 600;
     this.groundColor = 33;
+    this.dropsHitGround = 0;
   }
 
   //if rainCloud.hitGround is true then it will add +1 to ground color increasing the blue value
@@ -111,6 +89,28 @@ class Ground {
     fill(38, 33, this.groundColor);
     strokeWeight(0);
     rect(0, 590, this.width, this.height);
+  }
+
+  //method that goes through the array of drops and checks if any of them hit the ground, called on in draw function (P5)
+  hitGround() {
+    for (var i = 0; i < rainCloud.drops.length; i++) {
+      //if the drop hits the ground it is removed from the array and then runs the grounds addColor method
+      if (rainCloud.drops[i].y > 590) {
+        rainCloud.drops.splice(i, 1);
+
+        //adds one to the drop counter
+        this.dropsHitGround++;
+      }
+
+      //if statement that adds color to ground for every 10 drops that hits the ground, then resets the dropsHitGround counter
+      if (this.dropsHitGround == 10) {
+        //adds color to ground layer
+        this.groundColor++;
+
+        //resets the var
+        this.dropsHitGround = 0;
+      }
+    }
   }
 }
 //-----------------------Starting Program--------------------//
@@ -128,7 +128,7 @@ function draw() {
   //redraws background
   background(38, 33, 33);
 
-  //creates a drop at a 2% chance
+  //creates a drop at a 20% chance
   if (Math.random() < 0.2) {
     rainCloud.createDrop();
   }
@@ -140,5 +140,5 @@ function draw() {
   rainCloud.update();
 
   //runs the method that checks if the drops have hit the ground
-  rainCloud.hitGround();
+  ground.hitGround();
 }
