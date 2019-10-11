@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <style>
+      .row {
+        display: flex;
+      }
+      .cell {
+        width: 30px;
+        height: 30px;
+        margin: 3px;
+        padding: 3px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="gameOver" class="gover">Game Over</div>
+      <div v-if="playerOne" class="pWin">1</div>
+      <div v-if="playerTwo" class="pWin">2</div>
+      <div class="gameSpace">
+        <div class="row" v-for="(row, indexR) in grid" v-bind:key="row">
+          <div
+            class="cell"
+            v-for="(item, indexC) in row"
+            v-bind:key="item"
+            v-on:click="selectCell(indexR, indexC)"
+          >
+            {{ item }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
