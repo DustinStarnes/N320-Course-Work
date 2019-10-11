@@ -53,9 +53,9 @@ var app = new Vue({
             ) {
               this.gameOver = true;
               if (this.playerTurn == 1) {
-                this.playerOne = true;
-              } else {
                 this.playerTwo = true;
+              } else {
+                this.playerOne = true;
               }
               break;
             }
@@ -68,6 +68,11 @@ var app = new Vue({
               (this.grid[row][col] == 1 || this.grid[row][col] == 2)
             ) {
               this.gameOver = true;
+              if (this.playerTurn == 1) {
+                this.playerTwo = true;
+              } else {
+                this.playerOne = true;
+              }
               this.winningplayer = this.playerturn;
               break;
             }
@@ -80,6 +85,11 @@ var app = new Vue({
               (this.grid[row][col] == 1 || this.grid[row][col] == 2)
             ) {
               this.gameOver = true;
+              if (this.playerTurn == 1) {
+                this.playerTwo = true;
+              } else {
+                this.playerOne = true;
+              }
               this.winningplayer = this.playerturn;
               break;
             }
@@ -92,6 +102,11 @@ var app = new Vue({
               (this.grid[row][col] == 1 || this.grid[row][col] == 2)
             ) {
               this.gameOver = true;
+              if (this.playerTurn == 1) {
+                this.playerTwo = true;
+              } else {
+                this.playerOne = true;
+              }
               this.winningplayer = this.playerturn;
               break;
             }
