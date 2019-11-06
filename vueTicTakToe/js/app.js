@@ -1,15 +1,18 @@
+//class for the boxes that holds the value of the move
 class Box {
   constructor() {
     this.value = null;
   }
 }
 
+//class for the game, holds the game state and moves and stuff
 class Game {
   constructor() {
     this.inProgress = true;
     this.winner = null; //will be either o or x
     this.currentTurn = Game.O; //o always goes first
     this.movesMade = 0;
+    //game state
     this.boxes = [
       new Box(),
       new Box(),
@@ -23,6 +26,7 @@ class Game {
     ];
   }
 
+  //method for moaking a move i is the position in the game state array
   makeMove(i) {
     //if in progress run this
     if (this.inProgress && !this.boxes[i].value) {
@@ -93,11 +97,14 @@ class Game {
   }
 }
 
+//players
 Game.O = "O";
 Game.X = "X";
 
+//new game
 let activeGame = new Game();
 
+//vue for the game
 let gameVue = new Vue({
   el: "#board",
   data: activeGame,
