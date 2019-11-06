@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <div id="board">
+      <div id="message">
+        {{ infoMessage }}
+      </div>
+      <div id="boxes">
+        <div
+          v-for="(box, i) in boxes"
+          v-on:click="activeGame.makeMove(i)"
+          class="box"
+        >
+          {{ box.value }}
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
+
+    <script src="js/app.js"></script>
+  </body>
+</html>
