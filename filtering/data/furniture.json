@@ -1,0 +1,35 @@
+{
+  "furniture": [
+    { "type": "bed", "price": 100, "style": "modern", "asset": "bedBunk.obj" },
+    {
+      "type": "bed",
+      "price": 240,
+      "style": "rustic",
+      "asset": "bedSingle.obj"
+    },
+    {
+      "type": "chair",
+      "price": 20,
+      "style": "modern",
+      "asset": "chairDesk.obj"
+    },
+    {
+      "type": "chair",
+      "price": 60,
+      "style": "classic",
+      "asset": "chair.obj"
+    },
+    {
+      "type": "couch",
+      "price": 120,
+      "style": "rustic",
+      "asset": "loungeSofa.obj"
+    },
+    {
+      "type": "couch",
+      "price": 300,
+      "style": "modern",
+      "asset": "loungeSofaLong.obj"
+    }
+  ]
+}

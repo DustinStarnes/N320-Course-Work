@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>3d Filtering Lab</title>
+    <style>
+      .selected {
+        background-color: #00ff00;
+      }
+      #filterBox {
+        padding: 15px;
+        width: 770px;
+        border: 1px solid #444;
+        border-radius: 5px;
+      }
+      #infoBox {
+        width: 300px;
+        border: 1px solid #444444;
+        border-radius: 5px;
+        margin-left: 5px;
+      }
+      .container {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <canvas id="renderCanvas" width="800" height="600"> </canvas>
+      <div id="infoBox"></div>
+    </div>
+    <div id="filterBox">
+      <div>
+        <button
+          class="filterNva selected"
+          onclick="selectType(event)"
+          data-type="all"
+        >
+          ALL
+        </button>
+        <button class="filterNva" onclick="selectType(event)" data-type="chair">
+          chairs
+        </button>
+        <button class="filterNva" onclick="selectType(event)" data-type="bed">
+          beds
+        </button>
+      </div>
+      Cost:
+      <input
+        id="rgCost"
+        type="range"
+        min="0"
+        max="400"
+        onchange="showAvailable()"
+      />
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babylonjs/4.0.3/babylon.js"></script>
+    <script src="https://cdn.babylonjs.com/loaders/babylonjs.loaders.min.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

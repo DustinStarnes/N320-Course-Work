@@ -4,6 +4,7 @@ var camera;
 
 var sphere, light, blueMat;
 var selectedMesh = null;
+var lesserSphere;
 
 var scene = createScene(); //Call the createScene function
 
@@ -31,7 +32,7 @@ function createScene() {
 
   // Add and manipulate meshes in the scene
   sphere = BABYLON.MeshBuilder.CreateSphere("sphere", { diameter: 0.7 }, scene);
-  var lesserSphere = BABYLON.MeshBuilder.CreateSphere(
+  lesserSphere = BABYLON.MeshBuilder.CreateSphere(
     "sphere2",
     { diameter: 0.2 },
     scene
@@ -69,18 +70,25 @@ function createScene() {
 // Register a render loop to repeatedly render the scene
 engine.runRenderLoop(function() {
   //sphere.rotate(BABYLON.Axis.Y, .01, BABYLON.Space.WORLD);
+
+  TweenLite.to(lesserSphere.rotation, 1, {
+    x: "+=.5",
+    onComplete: checkUp
+  });
   scene.render();
 });
 
 function checkUp() {
   console.log(selectedMesh.rotation.y);
 }
-
+function orbit() {
+  console.log("orbiting");
+}
 window.addEventListener("keydown", event => {
   if (selectedMesh) {
     if (event.keyCode == 87) {
       TweenLite.to(selectedMesh.rotation, 1, {
-        x: "+=20",
+        x: "+=.5",
         onComplete: checkUp
       });
     }
